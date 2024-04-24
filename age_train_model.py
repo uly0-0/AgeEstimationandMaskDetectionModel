@@ -9,6 +9,8 @@ import numpy as np
 import keras
 from keras import layers
 from keras.models import load_model
+import matplotlib.pyplot as plt
+
 
 """
 ## Generate a `Dataset`
@@ -33,7 +35,7 @@ datagen = ImageDataGenerator(
 
 
 # load and iterate training dataset
-train_ds = datagen.flow_from_directory(r"C:\Users\ulyss\OneDrive\Desktop\dataset\train", 
+train_ds = datagen.flow_from_directory(r"C:\Users\ulyss\OneDrive\Desktop\dataset\validation", 
                                        target_size=image_size, 
                                        color_mode='rgb', 
                                        class_mode='categorical', 
@@ -118,30 +120,21 @@ loops = 15
 
 
 for i in range(loops):
-    model.fit(
+    history = model.fit(
     train_ds,
     epochs=epochs,
     validation_data=val_ds,
     shuffle=True,
     )
+    # Save the trained model
+    model.save(f"{modelName}.keras")
 
-import matplotlib.pyplot as plt
+    # Plot training history
+    plt.plot(history.history['accuracy'], label='accuracy')
+    plt.plot(history.history['val_accuracy'], label='val_accuracy')
+    plt.xlabel('Epoch')
+    plt.ylabel('Accuracy')
+    plt.legend()
+    plt.show()
 
-# Train the model
-history = model.fit(
-    train_ds,
-    epochs=epochs,
-    validation_data=val_ds,
-    shuffle=True,
-)
 
-# Save the trained model
-model.save(f"{modelName}.keras")
-
-# Plot training history
-plt.plot(history.history['accuracy'], label='accuracy')
-plt.plot(history.history['val_accuracy'], label='val_accuracy')
-plt.xlabel('Epoch')
-plt.ylabel('Accuracy')
-plt.legend()
-plt.show()
