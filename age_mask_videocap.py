@@ -1,3 +1,5 @@
+# Face Age Estimation and Mask Detection
+
 import cv2
 import numpy as np
 from keras.models import load_model
@@ -9,8 +11,10 @@ age_model = load_model('/Users/ulyochoa/Documents/AgeModel/model5Categorical.ker
 # Load mask detection model
 mask_model = load_model('/Users/ulyochoa/Documents/AgeModel/model5Binary.keras')
 
+#Define age ranges corresponding to model output
 AGE_LIST = ['(0-3)', '(4-7)', '(8-14)', '(15-20)', '(21-32)', '(33-43)', '(44-53)', '(54-100)']
 
+#Detect the age range of a face in a image
 def detect_age(image):
     # Preprocess image
     img = cv2.resize(image, (300, 300))
@@ -24,6 +28,7 @@ def detect_age(image):
 
     return age_range
 
+#function to detect whether a face is wearing a mask
 def detect_mask(image):
     # Preprocess image
     img = cv2.resize(image, (300, 300))
@@ -36,6 +41,7 @@ def detect_mask(image):
 
     return mask
 
+#main function to capture video from webcam and perform face detection, age estimation, and mask detection
 def main():
     # Open webcam
     cap = cv2.VideoCapture(0)
