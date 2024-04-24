@@ -9,21 +9,24 @@ age_model = load_model('/Users/ulyochoa/Documents/AgeModel/model5Categorical.ker
 # Load mask detection model
 mask_model = load_model('/Users/ulyochoa/Documents/AgeModel/model5Binary.keras')
 
+AGE_LIST = ['(0-3)', '(4-7)', '(8-14)', '(15-20)', '(21-32)', '(33-43)', '(44-53)', '(54-100)']
+
 def detect_age(image):
     # Preprocess image
-    img = cv2.resize(image, (200, 200))
-    img = img.reshape(1, 200, 200, 3).astype('float32')
+    img = cv2.resize(image, (300, 300))
+    img = img.reshape(1, 300, 300, 3).astype('float32')
     img /= 255
 
     # Predict age
     age_prediction = age_model.predict(img)
-    age = int(age_prediction[0])
+    age_index = np.argmax(age_prediction) #get index of highest predicted probability
+    age_range = AGE_LIST[age_index]
 
-    return age
+    return age_range
 
 def detect_mask(image):
     # Preprocess image
-    img = cv2.resize(image, (224, 224))
+    img = cv2.resize(image, (300, 300))
     img = img / 255.0
     img = np.expand_dims(img, axis=0)
 
@@ -73,3 +76,4 @@ def main():
     # Release video capture
     cap.release()
     cv2.destroyAllWindows()
+main()
