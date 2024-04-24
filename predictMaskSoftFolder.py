@@ -28,7 +28,7 @@ folder_path = r"C:\Users\omar2\OneDrive\Desktop\Mask Identification Dataset\Face
 total_images = 0
 
 for filename in os.listdir(folder_path):
-    if filename.endswith(".jpg"):
+    if filename.endswith(".png"):
         img_path = os.path.join(folder_path, filename)
         img = keras.utils.load_img(img_path, target_size=image_size)
         img_array = keras.utils.img_to_array(img)
@@ -39,13 +39,13 @@ for filename in os.listdir(folder_path):
         score = float(predictions[0][0])
         overall_predictions[0] += (1-score)
         overall_predictions[1] += score
+        total_images += 1
         #print(f"This image is {100 * (1 - score):.2f}% mask and {100 * score:.2f}% non-mask.")
 
 # Print the average score for each class
 if total_images > 0:
-    for i in range(num_classes):
-        #print("I think there are: " + str(overall_predictions[i]) + " out of " + str(total_images) + " (" + str("{:.2f}".format((overall_predictions[i]/total_images)*100)) + ")% " + labels[i] + " year olds in this folder")
-        print(f"This folder is {100 * overall_predictions[0]:.2f}% mask and {100 * overall_predictions[1]:.2f}% non-mask.")
+    #print("I think there are: " + str(overall_predictions[i]) + " out of " + str(total_images) + " (" + str("{:.2f}".format((overall_predictions[i]/total_images)*100)) + ")% " + labels[i] + " year olds in this folder")
+    print(f"This folder is {100 * (overall_predictions[0]/total_images):.2f}% mask and {100 * (overall_predictions[1]/total_images):.2f}% non-mask.")
 
 else:
     print("No images found in the folder.")
