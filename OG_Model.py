@@ -11,36 +11,6 @@ import os
 # load pre-trained super resolution
 #model = tf.keras.applications.VGG19(weights = 'imagenet', include_top = False)
 
-"""def upscale_image(image_path):
-    # load & process image
-    input_image = cv2.imread(image_path)
-    input_image = cv2.cvtColor(input_image, cv2.COLOR_BGR2RGB)
-    input_image = cv2.resize(input_image, (224, 224))
-    input_image = np.expand_dims(input_image, axis = 0)
-
-    #upscale image
-    upscaled_image = model.predict(input_image)
-
-    # post process the upscaled image
-    upscaled_image = np.clip(upscaled_image[0], 0, 225).astype(np.uint8)
-
-    return upscaled_image
-
-def save_image(image, output_path):
-    cv2.imwrite(output_path, cv2.cvtColor(image, cv2.COLOR_RGB2BGR))
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description= "Simple Image Upscaler")
-    parser.add_argument("input", help = "Path to the input image file")
-    parser.add_argument("output", help="Path to save upscaled image file")
-
-    args = parser.parse_args()
-    
-    input_image_path = args.input
-    output_image_path = args.output # replace with desired output path
-
-    upscale_image(input_image_path, output_image_path)
-"""
 
 #testing commit omar
 #testing commit uly
