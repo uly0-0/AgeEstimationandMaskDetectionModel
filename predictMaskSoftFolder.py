@@ -24,7 +24,7 @@ overall_predictions = [0] * num_classes  # For a list
 
 #folder_path = "larger_categories/8"
 #folder_path = "larger_categories_unseen/8"
-folder_path = r"C:\Users\omar2\OneDrive\Desktop\Mask Identification Dataset\Face Mask Dataset\Single"
+folder_path = r"C:\Users\omar2\OneDrive\Desktop\Mask Identification Dataset\Face Mask Dataset\Validation\1"
 total_images = 0
 
 for filename in os.listdir(folder_path):
@@ -40,7 +40,7 @@ for filename in os.listdir(folder_path):
         overall_predictions[0] += (1-score)
         overall_predictions[1] += score
         total_images += 1
-        #print(f"This image is {100 * (1 - score):.2f}% mask and {100 * score:.2f}% non-mask.")
+        print(f"This image is {100 * (1 - score):.2f}% mask and {100 * score:.2f}% non-mask.")
 
 # Print the average score for each class
 if total_images > 0:

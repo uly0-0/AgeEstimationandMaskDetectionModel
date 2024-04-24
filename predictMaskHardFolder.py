@@ -24,7 +24,7 @@ overall_predictions = [0] * num_classes  # For a list
 
 #folder_path = "larger_categories/8"
 #folder_path = "larger_categories_unseen/8"
-folder_path = r"C:\Users\omar2\OneDrive\Desktop\Mask Identification Dataset\Face Mask Dataset\Single"
+folder_path = r"C:\Users\omar2\OneDrive\Desktop\Mask Identification Dataset\Face Mask Dataset\Validation\1"
 total_images = 0
 non_mask_images = 0
 
@@ -44,9 +44,8 @@ for filename in os.listdir(folder_path):
 
 # Print the average score for each class
 if total_images > 0:
-    for i in range(num_classes):
-        #print("I think there are: " + str(overall_predictions[i]) + " out of " + str(total_images) + " (" + str("{:.2f}".format((overall_predictions[i]/total_images)*100)) + ")% " + labels[i] + " year olds in this folder")
-        #print(f"This folder is {100 * overall_predictions[0]:.2f}% mask and {100 * overall_predictions[1]:.2f}% non-mask.")
-        print(f"I think this folder contains {non_mask_images} non-mask images and {total_images - non_mask_images} mask images.")
+    #print("I think there are: " + str(overall_predictions[i]) + " out of " + str(total_images) + " (" + str("{:.2f}".format((overall_predictions[i]/total_images)*100)) + ")% " + labels[i] + " year olds in this folder")
+    #print(f"This folder is {100 * overall_predictions[0]:.2f}% mask and {100 * overall_predictions[1]:.2f}% non-mask.")
+    print(f"I think this folder contains {non_mask_images} non-mask images and {total_images - non_mask_images} mask images.")
 else:
     print("No images found in the folder.")
