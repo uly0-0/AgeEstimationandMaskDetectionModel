@@ -1,15 +1,13 @@
-# Face Age Estimation and Mask Detection
-
 import cv2
 import numpy as np
 from keras.models import load_model
 from keras.preprocessing import image
 
 # Load age estimation model
-age_model = load_model('/Users/ulyochoa/Documents/AgeModel/model5Categorical.keras')
+age_model = load_model('/Users/omarali/Desktop/CSCI158/AgeEstimationandMaskDetectionModel/model5Categorical.keras')
 
 # Load mask detection model
-mask_model = load_model('/Users/ulyochoa/Documents/AgeModel/model5Binary.keras')
+mask_model = load_model('/Users/omarali/Desktop/CSCI158/AgeEstimationandMaskDetectionModel/model5Binary.keras')
 
 #Define age ranges corresponding to model output
 AGE_LIST = ['(0-3)', '(4-7)', '(8-14)', '(15-20)', '(21-32)', '(33-43)', '(44-53)', '(54-100)']
@@ -37,9 +35,11 @@ def detect_mask(image):
 
     # Predict mask
     mask_prediction = mask_model.predict(img)
-    mask = "Mask" if mask_prediction[0][0] > 0.5 else "No Mask"
+    mask_prob = mask_prediction[0][0]
+    mask = "No Mask" if mask_prob < 0.06 else "Mask"
 
-    return mask
+    return mask, mask_prob  # Return both label and probability
+
 
 #main function to capture video from webcam and perform face detection, age estimation, and mask detection
 def main():
