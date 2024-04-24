@@ -1,14 +1,18 @@
 
+
+"""
+## Setup
+"""
+
 import os
 import numpy as np
 import keras
 from keras import layers
-from tensorflow import data as tf_data
-import matplotlib.pyplot as plt
-from keras.applications.inception_v3 import InceptionV3
-from keras.models import Model
-import tensorflow_hub as hub
 from keras.models import load_model
+
+"""
+## Generate a `Dataset`
+"""
 
 image_size = (300, 300)
 larger_input = image_size + (3,)
@@ -29,21 +33,20 @@ datagen = ImageDataGenerator(
 
 
 # load and iterate training dataset
-train_ds = datagen.flow_from_directory('larger_categories', 
+train_ds = datagen.flow_from_directory(r"C:\Users\ulyss\OneDrive\Desktop\dataset\train", 
                                        target_size=image_size, 
                                        color_mode='rgb', 
                                        class_mode='categorical', 
                                        batch_size=batch_size)
 # load and iterate validation dataset
-val_ds = datagen.flow_from_directory('larger_categories_unseen', 
+val_ds = datagen.flow_from_directory(r"C:\Users\ulyss\OneDrive\Desktop\dataset\validation", 
                                       target_size=image_size, 
                                       color_mode='rgb', 
                                       class_mode='categorical', 
                                       batch_size=batch_size)
 
 
-
-modelName = "AgeModel"
+modelName = "model5Categorical"
 def create_model(input_shape, num_classes):
     inputs = keras.Input(shape=input_shape)
 
@@ -111,18 +114,15 @@ model.summary()
 """
 
 epochs = 1
+loops = 15
 
 
-callbacks = [
-
-]
-
-model.fit(
+for i in range(loops):
+    model.fit(
     train_ds,
     epochs=epochs,
-    callbacks=callbacks,
     validation_data=val_ds,
     shuffle=True,
-)
+    )
 
-model.save(f"{modelName}.keras")
+    model.save(f"{modelName}.keras")

@@ -3,11 +3,11 @@ import shutil
 import random
 
 # Define the source directory containing the images
-source_dir = 'path_to_source_folder'
+source_dir = r"C:\Users\ulyss\OneDrive\Desktop\utkcropped"
 
 # Define the destination directories for training and validation sets
-train_dir = 'path_to_train_folder'
-val_dir = 'path_to_val_folder'
+train_dir = r"C:\Users\ulyss\OneDrive\Desktop\train"
+val_dir = r"C:\Users\ulyss\OneDrive\Desktop\validation"
 
 # Define the desired ratio for splitting the data (e.g., 80% training, 20% validation)
 split_ratio = 0.8
