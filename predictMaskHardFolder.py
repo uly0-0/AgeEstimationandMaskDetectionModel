@@ -8,9 +8,9 @@ larger_input = image_size + (3,)
 batch_size = 128
 num_classes = 2
 
-if os.path.exists("model5Binary.keras"):
+if os.path.exists("MaskIdentificationModel.keras"):
     # Load the weights if the file exists
-    model = load_model("model5Binary.keras")
+    model = load_model("MaskIdentificationModel.keras")
     print("Previous weights found, using those")
 else:
     print("no model found")
