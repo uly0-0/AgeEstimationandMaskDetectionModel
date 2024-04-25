@@ -7,7 +7,7 @@ from keras.preprocessing import image
 age_model = load_model('/Users/omarali/Desktop/CSCI158/AgeEstimationandMaskDetectionModel/model5Categorical.keras')
 
 # Load mask detection model
-mask_model = load_model('/Users/omarali/Desktop/CSCI158/AgeEstimationandMaskDetectionModel/model5Binary.keras')
+mask_model = load_model('/Users/omarali/Desktop/CSCI158/AgeEstimationandMaskDetectionModel/MaskIdentificationModel.keras')
 
 #Define age ranges corresponding to model output
 AGE_LIST = ['(0-3)', '(4-7)', '(8-14)', '(15-20)', '(21-32)', '(33-43)', '(44-53)', '(54-100)']
