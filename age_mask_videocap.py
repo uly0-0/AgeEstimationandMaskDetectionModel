@@ -4,7 +4,7 @@ from keras.models import load_model
 from keras.preprocessing import image
 
 # Load age estimation model
-age_model = load_model('/Users/ulyochoa/Documents/AgeModel/model5Categorical.keras')
+age_model = load_model('/Users/ulyochoa/Documents/AgeModel/AgeEstimationModel.keras')
 
 # Load mask detection model
 mask_model = load_model('/Users/ulyochoa/Documents/AgeModel/maskIdentification.keras')
