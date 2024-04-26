@@ -93,7 +93,7 @@ else:
 model.summary()
 
 # Train the model
-epochs = 3
+epochs = 6
 history = model.fit(train_ds, epochs=epochs, validation_data=val_ds, shuffle=True)
 
 # Save the trained model

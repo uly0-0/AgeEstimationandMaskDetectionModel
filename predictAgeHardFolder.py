@@ -31,9 +31,9 @@ def number_to_string(num):
 
 
 
-if os.path.exists("model5Categorical.keras"):
+if os.path.exists("AgeEstimationModel.keras"):
     # Load the weights if the file exists
-    model = load_model("model5Categorical.keras")
+    model = load_model("AgeEstimationModel.keras")
     print("Previous weights found, using those")
 else:
     print("no model found")
@@ -47,7 +47,7 @@ overall_predictions = [0] * num_classes  # For a list
 
 #folder_path = "larger_categories/8"
 #folder_path = "larger_categories_unseen/8"
-folder_path = r"C:\Users\ulyss\OneDrive\Desktop\dataset\test"
+folder_path = r"C:\Users\omar2\OneDrive\Desktop\Mask Identification Dataset\Face Mask Dataset\Single"
 total_images = 0
 
 for filename in os.listdir(folder_path):
